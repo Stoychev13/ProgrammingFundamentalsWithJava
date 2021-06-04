@@ -1,23 +1,26 @@
 package com.company.ArraysLab;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class SumEvenNumbers {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        String[] input = scanner.nextLine().split(" ");
-        int[] num = new int[input.length];
+        int[] number = Arrays
+                .stream(scanner.nextLine().split(" "))
+                .mapToInt(element -> Integer.parseInt(element))
+                .toArray();
 
-        for (int i = 0; i < num.length; i++) {
-            num[i] = Integer.parseInt(input[i]);
-        }
-        int evenSum = 0;
-        for (int number : num) {
-            if (number % 2 == 0) {
-                evenSum += number;
+        int evenNumbers = 0;
+
+        for (int num : number) {
+            if (num % 2 == 0) {
+                evenNumbers += num;
             }
         }
-        System.out.println(evenSum);
+
+        System.out.println(evenNumbers);
+
     }
 }

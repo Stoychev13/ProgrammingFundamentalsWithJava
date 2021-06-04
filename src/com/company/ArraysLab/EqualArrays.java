@@ -2,33 +2,38 @@ package com.company.ArraysLab;
 
 import java.util.Arrays;
 import java.util.Scanner;
-import java.util.stream.IntStream;
 
 public class EqualArrays {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-
-        int[] firstArray = getIntArrayFromString(scanner.nextLine());
-        int[] secondArray = getIntArrayFromString(scanner.nextLine());
-
-        String output = IntStream
-                .range(0, firstArray.length)
-                .filter(index -> firstArray[index] != secondArray[index])
-                .mapToObj(index -> String.format(
-                        "Arrays are not identical. Found difference at %d index.",
-                        index))
-                .findFirst()
-                .orElse(String.format(
-                        "Arrays are identical. Sum: %d",
-                        Arrays.stream(firstArray).sum()));
-
-        System.out.println(output);
-    }
-
-    private static int[] getIntArrayFromString(String str) {
-        return Arrays.stream(str.trim().split("\\s+"))
-                .mapToInt(Integer::parseInt)
+        int[] firstArray = Arrays
+                .stream(scanner.nextLine().split(" "))
+                .mapToInt(element -> Integer.parseInt(element))
                 .toArray();
+
+        int[] secondArray = Arrays
+                .stream(scanner.nextLine().split(" "))
+                .mapToInt(element -> Integer.parseInt(element))
+                .toArray();
+
+
+        int sum = 0;
+        boolean areIdentical = true;
+
+        for (int i = 0; i < firstArray.length; i++) {
+
+            sum += firstArray[i];
+
+            if (firstArray[i] != secondArray[i]) {
+                System.out.printf("Arrays are not identical. Found difference at %d index.", i);
+                areIdentical = false;
+                break;
+            }
+        }
+        if (areIdentical) {
+            System.out.printf("Arrays are identical. Sum: %d", sum);
+        }
+
     }
 }

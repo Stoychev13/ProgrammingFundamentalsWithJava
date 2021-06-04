@@ -1,30 +1,31 @@
 package com.company.ArraysLab;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class EvenAndOddSubtraction {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        String[] input = scanner.nextLine().split(" ");
-        int[] num = new int[input.length];
-
-        for (int i = 0; i < num.length; i++) {
-            num[i] = Integer.parseInt(input[i]);
-        }
-
         int evenSum = 0;
         int oddSum = 0;
+        int endSum = 0;
 
-        for (int number : num) {
-            if (number % 2 == 0) {
-                evenSum += number;
+        int[] numbers = Arrays
+                .stream(scanner.nextLine().split(" "))
+                .mapToInt(element -> Integer.parseInt(element))
+                .toArray();
+
+
+        for (int num : numbers) {
+            if (num % 2 == 0) {
+                evenSum += num;
             } else {
-                oddSum += number;
+                oddSum += num;
             }
         }
-        int endSum = evenSum - oddSum;
 
+        endSum = evenSum - oddSum;
         System.out.println(endSum);
     }
 }

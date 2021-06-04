@@ -10,12 +10,13 @@ public class DayOfWeek {
 
         int day = Integer.parseInt(scanner.nextLine());
 
-        if (day > 0 && day <= 7) {
+        if (day >= 1 && day <= 7) {
+
             day -= 1;
             System.out.println(days[day]);
+
         } else {
             System.out.println("Invalid day!");
         }
-
     }
 }

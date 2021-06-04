@@ -12,13 +12,16 @@ public class CondenseArrayToNumber {
         for (int i = 0; i < input.length; i++) {
             numbers[i] = Integer.parseInt(input[i]);
         }
+
         while (numbers.length > 1) {
-            int[] temp = new int[numbers.length - 1];
-            for (int i = 0; i < temp.length; i++) {
-                temp[i] = numbers[i] + numbers[i + 1];
+            int[] condensed = new int[numbers.length - 1];
+
+            for (int i = 0; i < condensed.length; i++) {
+                condensed[i] = numbers[i] + numbers[i + 1];
             }
-            numbers = temp;
+            numbers = condensed;
         }
         System.out.println(numbers[0]);
+
     }
 }

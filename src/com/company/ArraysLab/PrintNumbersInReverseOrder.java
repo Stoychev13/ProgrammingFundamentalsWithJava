@@ -7,13 +7,15 @@ public class PrintNumbersInReverseOrder {
         Scanner scanner = new Scanner(System.in);
 
         int n = Integer.parseInt(scanner.nextLine());
-        int[] numbers = new int[n];
 
-        for (int i = 0; i < numbers.length; i++) {
-            numbers[i] = Integer.parseInt(scanner.nextLine());
+        int[] number = new int[n];
+
+        for (int i = 0; i < number.length; i++) {
+            int num = Integer.parseInt(scanner.nextLine());
+            number[i] = num;
         }
-        for (int i = numbers.length - 1; i >= 0; i--) {
-            System.out.printf("%d ", numbers[i]);
+        for (int i = number.length - 1; i >= 0; i--) {
+            System.out.print(number[i] + " ");
         }
     }
 }
